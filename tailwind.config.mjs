@@ -8,8 +8,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        // background: "var(--background)",
+        // foreground: "var(--foreground)",
+        "accent": "var(--color-accent)",
+        "dark-gray": "var(--color-dark-gray)",
+        "brand": "var(--color-brand)",
+        'purple': '#9571F6',
       },
     },
   },
