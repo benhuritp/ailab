@@ -3,7 +3,7 @@ import React, { memo } from "react";
 import PropTypes from "prop-types";
 
 export const GenderSelect = memo(({ onSubmit }) => (
-    <div className="h-full m-auto max-w-[400px] px-[40px] flex flex-col">
+    <div className="min-h-full mx-auto max-w-[400px] px-[40px] flex flex-col">
         <img className="mt-[40px] mb-[90px] mx-auto" src="logo.png" alt="Logo" />
         <h2 className="font-bold text-[28px] mb-[15px] text-center semi-black">AI-DRIVEN INCOME GROWTH CHALLENGE</h2>
         <div className="text-[13px] text-[#414141] text-center  mb-[15px]"><span className="font-bold">1-MINUTE</span> QUIZ</div>
@@ -43,7 +43,7 @@ export const GenderSelect = memo(({ onSubmit }) => (
 ));
 
 export const AgeSelect = memo(({ onSubmit, gender }) => (
-    <div className="h-full m-auto max-w-[400px] px-[40px] flex flex-col">
+    <div className="min-h-full mx-auto max-w-[400px] px-[40px] flex flex-col">
         <img className="mt-[40px] mb-[90px] mx-auto" src="logo.png" alt="Logo" />
         <h2 className="font-bold text-[28px] mb-[15px] text-center semi-black">AI-DRIVEN INCOME GROWTH CHALLENGE</h2>
         <div className="text-[13px] text-[#414141] text-center  mb-[15px]"><span className="font-bold">1-MINUTE</span> QUIZ</div>

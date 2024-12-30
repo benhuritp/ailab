@@ -6,23 +6,43 @@ import { GenderSelect, AgeSelect } from "./DemographicSelect";
 import { quizSteps } from "./quizData";
 import { useQuizStore } from "./store";
 import EmailForm from "./EmailForm";
-const InfoBlock = memo(({ info, onNext }) => (
-    <div className="p-5 border border-gray-200 rounded-lg mb-5 bg-gray-100">
-        <p>{info.text}</p>
-        <button
-            onClick={onNext}
-            className="mt-3 p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-all duration-200"
-        >
-            Следующий шаг
-        </button>
-    </div>
-));
+
+const InfoBlock = memo(({ info, onNext, currentStep }) => {
+    const renderContent = () => {
+        switch (currentStep) {
+            case 4:
+                return (
+                    <div className="">
+                        <img className="rounded-[10px] mb-[15px]" src="q5/image.png" alt="step5" />
+                        <div className="text-[20px] font-semibold mb-[20px] leading-[135%]"> Thank you for sharing, we will do our best to help you!</div>
+
+                        <div className="text-[15px] leading-[135%]"> We have helped more than 100,000 people to boost their productivity and income potential at work and life using latest AI tools.</div>
+                    </div>
+                );
+            default:
+                return null;
+        }
+    };
+
+    return (
+        <div className="min-h-full mx-auto max-w-[400px] px-[40px] flex flex-col pb-[40px]">
+            <img className="mt-[40px] mb-[30px] mx-auto" src="logo.png" alt="Logo" />
+            <div className="mb-[40px]">
+                {renderContent()}
+            </div>
+            <button onClick={onNext} className="button mt-auto ">
+                Continue
+            </button>
+        </div>
+    );
+});
 
 InfoBlock.propTypes = {
     info: PropTypes.shape({
         text: PropTypes.string.isRequired
     }).isRequired,
-    onNext: PropTypes.func.isRequired
+    onNext: PropTypes.func.isRequired,
+    currentStep: PropTypes.number.isRequired
 };
 
 const Quiz = memo(({ totalSteps }) => {
@@ -42,8 +62,6 @@ const Quiz = memo(({ totalSteps }) => {
 
     const [isLoading, setIsLoading] = useState(true);
     const [multipleAnswers, setMultipleAnswers] = useState([]);
-
- 
 
     useEffect(() => {
         setIsLoading(false);
@@ -111,24 +129,22 @@ const Quiz = memo(({ totalSteps }) => {
         const currentQuestion = quizSteps[currentStep];
 
         if (currentQuestion.type === "info") {
-            return <InfoBlock info={currentQuestion} onNext={() => setCurrentStep(currentStep + 1)} />;
+            return <InfoBlock info={currentQuestion} onNext={() => setCurrentStep(currentStep + 1)} currentStep={currentStep} />;
         }
 
         return (
-            <div>
-                <QuizBlock
-                    question={currentQuestion}
-                    onAnswer={handleAnswer}
-                    selectedAnswers={multipleAnswers}
-                    onBack={handleBack}
-                    totalSteps={quizSteps.length}
-                />
-            </div>
+            <QuizBlock
+                question={currentQuestion}
+                onAnswer={handleAnswer}
+                selectedAnswers={multipleAnswers}
+                onBack={handleBack}
+                totalSteps={quizSteps.length}
+            />
         );
     };
 
     if (isLoading) {
-        return <div className='h-full w-full flex justify-center items-center'>loading...</div>;
+        return <div className='min-h-full w-full flex justify-center items-center '>loading...</div>;
     }
 
     if (!gender || !age) {
@@ -137,7 +153,7 @@ const Quiz = memo(({ totalSteps }) => {
 
     if (onIntro) {
         return (
-            <div className="h-full m-auto max-w-[400px] px-[40px] flex flex-col">
+            <div className="min-h-full mx-auto max-w-[400px] px-[40px] flex flex-col pb-[40px]">
                 <img className="mt-[40px] mb-[30px] mx-auto" src="logo.png" alt="Logo" />
                 <div className='bg-[#EAEAEA] p-[50px_16px] rounded-[18px] mb-[40px]'>
                     <h4 className='text-[28px] font-bold text-accent text-center mb-[9px]'>
@@ -152,21 +168,21 @@ const Quiz = memo(({ totalSteps }) => {
                                 </span>
                                 AI Won't Replace Humans — But Humans With AI Will Replace Humans Without AI
                                 <span className=' text-[#6D3BF5]
-                            text-[24px] font-semibold absolute right-[25px] bottom-[-5px] 
-                            '>”</span>
+              text-[24px] font-semibold absolute right-[25px] bottom-[-5px] 
+              '>”</span>
                             </div>
                         </div>
                         <img className="mx-auto" src="harvard.png" alt="harvard" />
                     </div>
                     <div className="text-dark-gray text-center font-semibold mb-[15px]">Latest AI tools mentioned in</div>
-                <img className="mx-auto" src="logotypes.png " alt="Logotypes" />
+                    <img className="mx-auto" src="logotypes.png " alt="Logotypes" />
                 </div>
                 <button
                     onClick={() => {
                         setOnIntro(false);
                         setCurrentStep(0);
                     }}
-                    className="button "
+                    className="button mt-auto "
                 >
                     Continue
                 </button>
@@ -174,7 +190,7 @@ const Quiz = memo(({ totalSteps }) => {
         );
     }
 
-    return <div>{renderQuizStep()}</div>;
+    return <>{renderQuizStep()}</>;
 });
 
 export { Quiz };
