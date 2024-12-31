@@ -16,17 +16,34 @@ body {
   // background: var(--background);
   display: flex;
   line-height: 1.1;
+  overflow-x: hidden;
 }
-html,body{
+
+html,
+body {
   min-height: 100vh;
 }
 
 .semi-black {
   color: #202020;
 }
-.button{
-  @apply bg-brand text-white font-semibold min-h-[54px] py-2 px-4 rounded-[7px] hover:bg-[#6b42db] transition-all
-disabled:bg-purple/30
 
-  ;
+.button {
+  @apply bg-brand text-white font-semibold min-h-[54px] py-2 px-4 rounded-[7px] hover:bg-[#6b42db] transition-all disabled:bg-purple/30;
+}
+
+.input {
+  min-height: 50px;
+  border: 1px solid #BFBFBF;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .answer {
+    &:hover {
+      background-color: #e3e3e3 !important;
+    }
+  }
+
 }
