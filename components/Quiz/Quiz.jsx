@@ -6,6 +6,7 @@ import { GenderSelect, AgeSelect } from "./DemographicSelect";
 import { quizSteps } from "./quizData";
 import { useQuizStore } from "./store";
 import EmailForm from "./EmailForm";
+import Image from "next/image";
 
 const InfoBlock = memo(({ info, onNext, currentStep }) => {
     const { gender } = useQuizStore();
@@ -23,9 +24,9 @@ const InfoBlock = memo(({ info, onNext, currentStep }) => {
             case 20:
                 return (
                     <div className="">
-                        <img 
+                        <Image width={309} height={215} 
                             className="rounded-[10px] mb-[15px]" 
-                            src={gender === "man" ? "i20/man.png" : "i20/female.png"} 
+                            src={gender === "man" ? "/i20/man.png" : "/i20/female.png"} 
                             alt="step20" 
                         />
                         <div className="text-[20px] font-semibold mb-[20px] leading-[135%]"> We will help you to boost your income potential at work using latest AI tools, just like we did for more than 100,000 people.</div>
@@ -75,7 +76,7 @@ const OutroSection = memo(({ onNext }) => {
                     AI Master by Feb, 2025
                 </div>
                 <div className="mb-[30px] mt-[20px] text-[16px] bg-[#E4E4E4] p-[10px] rounded-[10px] mx-auto">Your goal: <span className="font-semibold">{answer20}</span></div>
-                <img src="outro.png" alt="outro" />
+                <Image width={320} height={225} src="/outro.png" alt="outro" />
             </div>
             <button
                 onClick={onNext}
@@ -233,7 +234,7 @@ const Quiz = memo(({ totalSteps }) => {
                         <img className="mx-auto" src="harvard.png" alt="harvard" />
                     </div>
                     <div className="text-dark-gray text-center font-semibold mb-[15px]">Latest AI tools mentioned in</div>
-                    <img className="mx-auto" src="logotypes.png " alt="Logotypes" />
+                    <Image width={290} height={130} className="mx-auto" src="/logotypes.png" alt="Logotypes" />
                 </div>
                 <button
                     onClick={() => {

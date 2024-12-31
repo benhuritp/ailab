@@ -3,6 +3,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useQuizStore } from "./store";
+import Image from "next/image";
 
 const QuizBlock = ({ question, onAnswer, selectedAnswers = [], onBack, quizSteps, totalQuestionSteps, currentQuestionNumber }) => {
   const { gender } = useQuizStore();
@@ -32,12 +33,12 @@ const QuizBlock = ({ question, onAnswer, selectedAnswers = [], onBack, quizSteps
     switch (currentQuestionNumber) {
       case 6:
         return <div className="">
-          <img className="absolute bottom-0 right-[-150px] z-[-1]" src={gender === "man" ? "q6/man.png" : "q6/female.png"} alt={gender} />
+          <Image width={450} height={450} className="absolute bottom-0 right-[-150px] z-[-1]" src={gender === "man" ? "/q6/man.png" : "/q6/female.png"} alt={gender} />
         </div>;
       case 8:
-        return <img className="absolute bottom-0 right-[-300px] w-[500px] max-w-none z-[-1]" src={gender === "man" ? "q8/man.png" : "q8/female.png"} alt={gender} />;
+        return <Image width={500} height={500} className="absolute bottom-0 right-[-200px] w-[500px] max-w-none z-[-1]" src={gender === "man" ? "/q8/man.png" : "/q8/female.png"} alt={gender} />;
       case 10:
-        return <img className="absolute bottom-0 right-[-300px] w-[500px] max-w-none z-[-1]" src={gender === "man" ? "q10/man.png" : "q10/female.png"} alt={gender} />;
+        return <Image width={500} height={500} className="absolute bottom-0 right-[-150px] w-[500px] max-w-none z-[-1]" src={gender === "man" ? "/q10/man.png" : "/q10/female.png"} alt={gender} />;
       case 14:
         return <div className="text-[#625B5B] mb-[25px] text-center">Choose all that apply</div>
           ;
@@ -54,10 +55,10 @@ const QuizBlock = ({ question, onAnswer, selectedAnswers = [], onBack, quizSteps
         return <div className="text-[#625B5B] mb-[25px] text-center">You’re more likely to reach your goal if you have something important to aim for
         </div>
           ;
-          case 22:
-            return <div className="">
-              <img className="absolute w-[500px] bottom-0 right-[-150px] z-[-1]" src={gender === "man" ? "q22/man.png" : "q22/female.png"} alt={gender} />
-            </div>;
+      case 22:
+        return <div className="">
+          <Image width={500} height={500} className="absolute min-w-[500px] bottom-0 right-[-150px] z-[-1]" src={gender === "man" ? "/q22/man.png" : "/q22/female.png"} alt={gender} />
+        </div>;
 
       default:
         return null;
@@ -103,7 +104,8 @@ const QuizBlock = ({ question, onAnswer, selectedAnswers = [], onBack, quizSteps
                 && "selected"
                 }`}
             >
-              {option.stickers && <img src={getSticker(option)} alt="" className="w-[68px] h-[68px] " />}
+              
+              {option.stickers && <Image src={`/${getSticker(option)}`} width={68} height={68}  alt="stiker" className="w-[68px] h-[68px] " />}
               <div className={`text-[15px] text-left leading-[135%]  ${!option.stickers && " text-center mx-auto"} ${option.stickers && " pr-[45px] "}`}>
                 {option.text}
               </div>

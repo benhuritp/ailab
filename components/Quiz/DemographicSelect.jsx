@@ -1,6 +1,7 @@
 "use client"
 import React, { memo } from "react";
 import PropTypes from "prop-types";
+import Image from "next/image";
 
 export const GenderSelect = memo(({ onSubmit }) => (
     <div className="min-h-full mx-auto max-w-[400px] w-[100%] px-[40px] flex flex-col">
@@ -17,7 +18,7 @@ export const GenderSelect = memo(({ onSubmit }) => (
                 >
                     {option === "man" ? (
                         <>
-                            <img className="h-[160px]  mx-auto" src="man.png" alt="Man" />
+                            <Image width={88} height={160} className="h-[160px] !w-auto  mx-auto" src="/man.png" alt="Man" />
                             <div className="h-[42px] bg-purple w-full uppercase  text-center text-[20px] flex items-center justify-center text-white">
                                 male
                                 <svg className="ml-[15px] transition-all arr" width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +28,7 @@ export const GenderSelect = memo(({ onSubmit }) => (
                         </>
                     ) : (
                         <>
-                            <img className="h-[160px]  mx-auto mt-auto" src="woman.png" alt="Female" />
+                            <Image width={138} height={160} className="h-[160px] !w-auto  mx-auto mt-auto" src="/woman.png" alt="Female" />
                             <div className="h-[42px]  bg-purple w-full uppercase  text-center text-[20px] flex items-center justify-center text-white">
                                 female
                                 <svg className="ml-[15px] transition-all" width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,28 +57,28 @@ export const AgeSelect = memo(({ onSubmit, gender }) => (
                     className="border pt-[10px] border-purple rounded-[23px] overflow-hidden flex flex-col  [&:hover_svg]:translate-x-[-10px]"
                 >
                     {option === "18-24" && gender === "man" && (
-                        <img className="h-[160px] mx-auto mt-auto" src="young-man.png" alt="Male" />
+                        <Image width={150} height={160} className="h-[160px] !w-auto object-cover mx-auto mt-auto" src="/young-man.png" alt="Male" />
                     )}
                     {option === "25-34" && gender === "man" && (
-                        <img className="h-[160px] mx-auto mt-auto" src="mature-man.png" alt="Male" />
+                        <Image width={150} height={160} className="h-[160px] !w-auto object-cover mx-auto mt-auto" src="/mature-man.png" alt="Male" />
                     )}
                     {option === "35-44" && gender === "man" && (
-                        <img className="h-[160px] mx-auto mt-auto" src="elegant-man.png" alt="Male" />
+                        <Image width={150} height={160} className="h-[160px] !w-auto object-cover mx-auto mt-auto" src="/elegant-man.png" alt="Male" />
                     )}
                     {option === "45+" && gender === "man" && (
-                        <img className="h-[160px] mx-auto mt-auto mb-[-4px]" src="graceful-man.png" alt="Male" />
+                        <Image width={150} height={160} className="h-[160px] !w-auto object-cover mx-auto mt-auto mb-[-4px]" src="/graceful-man.png" alt="Male" />
                     )}
                     {option === "18-24" && gender === "female" && (
-                        <img className="h-[160px] mx-auto mt-auto" src="young-woman.png" alt="Female" />
+                        <Image width={110} height={160} className="h-[160px] !w-auto object-cover mx-auto mt-auto" src="/young-woman.png" alt="Female" />
                     )}
                     {option === "25-34" && gender === "female" && (
-                        <img className="h-[160px] mx-auto mt-auto" src="mature-woman.png" alt="Female" />
+                        <Image width={110} height={160} className="h-[160px] !w-auto object-cover mx-auto mt-auto" src="/mature-woman.png" alt="Female" />
                     )}
                     {option === "35-44" && gender === "female" && (
-                        <img className="h-[160px] mx-auto mt-auto" src="elegant-woman.png" alt="Female" />
+                        <Image width={150} height={160} className="h-[160px] !w-auto object-cover mx-auto mt-auto" src="/elegant-woman.png" alt="Female" />
                     )}
                     {option === "45+" && gender === "female" && (
-                        <img className="h-[160px] mx-auto mt-auto" src="graceful-woman.png" alt="Female" />
+                        <Image width={150} height={160} className="h-[160px] !w-auto object-cover mx-auto mt-auto" src="/graceful-woman.png" alt="Female" />
                     )}
                     <div className="h-[42px] bg-purple w-full uppercase text-center text-[20px] flex items-center justify-center text-white">
                         age: {option}
