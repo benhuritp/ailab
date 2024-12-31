@@ -33,12 +33,12 @@ const QuizBlock = ({ question, onAnswer, selectedAnswers = [], onBack, quizSteps
     switch (currentQuestionNumber) {
       case 6:
         return <div className="">
-          <Image width={450} height={450} className="absolute bottom-0 right-[-150px] z-[-1]" src={gender === "man" ? "/q6/man.png" : "/q6/female.png"} alt={gender} />
+          <img className="absolute bottom-0 right-[-150px] z-[-1]" src={gender === "man" ? "q6/man.png" : "q6/female.png"} alt={gender} />
         </div>;
       case 8:
-        return <Image width={500} height={500} className="absolute bottom-0 right-[-200px] w-[500px] max-w-none z-[-1]" src={gender === "man" ? "/q8/man.png" : "/q8/female.png"} alt={gender} />;
+        return <img  className="absolute bottom-0 right-[-200px] w-[500px] max-w-none z-[-1]" src={gender === "man" ? "q8/man.png" : "q8/female.png"} alt={gender} />;
       case 10:
-        return <Image width={500} height={500} className="absolute bottom-0 right-[-150px] w-[500px] max-w-none z-[-1]" src={gender === "man" ? "/q10/man.png" : "/q10/female.png"} alt={gender} />;
+        return <img  className="absolute bottom-0 right-[-150px] w-[500px] max-w-none z-[-1]" src={gender === "man" ? "q10/man.png" : "q10/female.png"} alt={gender} />;
       case 14:
         return <div className="text-[#625B5B] mb-[25px] text-center">Choose all that apply</div>
           ;
@@ -57,7 +57,7 @@ const QuizBlock = ({ question, onAnswer, selectedAnswers = [], onBack, quizSteps
           ;
       case 22:
         return <div className="">
-          <Image width={500} height={500} className="absolute min-w-[500px] bottom-0 right-[-150px] z-[-1]" src={gender === "man" ? "/q22/man.png" : "/q22/female.png"} alt={gender} />
+          <img className="absolute min-w-[500px] bottom-0 right-[-150px] z-[-1]" src={gender === "man" ? "q22/man.png" : "q22/female.png"} alt={gender} />
         </div>;
 
       default:
@@ -105,7 +105,7 @@ const QuizBlock = ({ question, onAnswer, selectedAnswers = [], onBack, quizSteps
                 }`}
             >
               
-              {option.stickers && <Image src={`/${getSticker(option)}`} width={68} height={68}  alt="stiker" className="w-[68px] h-[68px] " />}
+              {option.stickers && <img src={`${getSticker(option)}`} alt="stiker" className="w-[68px] h-[68px] " />}
               <div className={`text-[15px] text-left leading-[135%]  ${!option.stickers && " text-center mx-auto"} ${option.stickers && " pr-[45px] "}`}>
                 {option.text}
               </div>
